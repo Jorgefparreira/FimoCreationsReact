@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { store, deleteFromCart } from "./cart_functions";
-import PaypalExpressBtn from "react-paypal-express-checkout";
 import SHOPPINGCART from "../assets/svg/cart";
 import RUBISHBIN from "../assets/svg/rubish_bin";
-// import Checkout from '../pages/checkout';
+import PaypalCheckout from "./paypal_checkout";
+
 
 class ViewCart extends Component {
   constructor(props) {
@@ -13,11 +13,7 @@ class ViewCart extends Component {
       items: [],
       showCart: "",
       showCartOverlay:""
-    };
-    this.client = {
-      sandbox: process.env.REACT_APP_PAYPAL_DEVELOPMENT_CODE,
-      production: process.env.REACT_APP_PAYPAL_PRODUCTION_CODE
-    };
+    };    
   }
   componentDidMount() {
     store.subscribe(() => {
@@ -25,27 +21,9 @@ class ViewCart extends Component {
       this.setState({
         items: viewCart.shoppingCart.cart
       });
-    });
+    });   
   }
-
-  onSuccess = payment => {
-    // Congratulation, it came here means everything's fine!
-    console.log("The payment was succeeded!", payment);
-    // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
-  };
-
-  onCancel = data => {
-    // User pressed "cancel" or close Paypal's popup!
-    console.log("The payment was cancelled!", data);
-    // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
-  };
-
-  onError = err => {
-    // The main Paypal's script cannot be loaded or somethings block the loading of that script!
-    console.log("Error!", err);
-    // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
-    // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
-  };
+  
 
   deleteProduct(name) {
     store.dispatch(deleteFromCart(name));
@@ -79,7 +57,7 @@ class ViewCart extends Component {
   addOne(name, quantity) {
     let newQuantity = quantity + 1;
     this.state.items.map((item, index) => {
-      if (this.state.items[index].product == name) {
+      if (this.state.items[index].product === name) {
         this.state.items[index].quantity = newQuantity;
         this.forceUpdate();
       }
@@ -92,7 +70,7 @@ class ViewCart extends Component {
       this.deleteProduct(name);
     }
     this.state.items.map((item, index) => {
-      if (this.state.items[index].product == name) {
+      if (this.state.items[index].product === name) {
         this.state.items[index].quantity = newQuantity;
         this.forceUpdate();
       }
@@ -103,13 +81,15 @@ class ViewCart extends Component {
     return (
       <section>
         {this.state.items.length > 0 ? (
-          <button
-            className="view-cart-btn btn btn-default"
+          <div
+            className="view-cart-btn"
             id="view-cart-btn"
             onClick={this.toggle.bind(this)}
           >
             <SHOPPINGCART/> {this.state.items.length}
-          </button>
+            
+          </div>
+          
         ) : (
           ""
         )}
@@ -128,7 +108,7 @@ class ViewCart extends Component {
                 <div className="clearfix">&nbsp;</div>
                 <div className="row">
                   <div className="col-4">
-                    <img src={item.images[0]} className="img-fluid" />
+                    <img src={item.images[0]} alt={item.name} className="img-fluid" />
                   </div>
                   <div className="col-8">
                     <div>
@@ -172,9 +152,9 @@ class ViewCart extends Component {
               <div className="clearfix">&nbsp;</div>
               <p>Total: £{this.cartTotal().toFixed(2)}</p>
               <div className="paypal-btn">
-                {/* <PaypalExpressBtn client={this.client} currency={'GBP'} total={this.cartTotal()} onCancel={this.onCancel} onError={this.onError} onSuccess={this.onSuccess} />         */}
+                <PaypalCheckout items={this.state.items} total={this.cartTotal()}></PaypalCheckout>
+                        
               </div>
-              {/* <button className="checkout-btn mx-auto d-block btn btn-info">Checkout</button> */}
             </div>
           </div>
         </div>

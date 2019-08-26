@@ -69,10 +69,6 @@ class Navbar extends Component {
     }
   }
 
-  componentWillMount() {
-    window.addEventListener("resize", this.handleWindowSizeChange);
-  }
-
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleWindowSizeChange);  
   }

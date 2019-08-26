@@ -46,7 +46,7 @@ class Contact extends Component {
     };
     xhttp.open(
       "POST",
-      "https://us-central1-lilfimokeyrings.cloudfunctions.net/app",
+      "https://us-central1-lilfimokeyrings.cloudfunctions.net/contactMailer",
       true
     );
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

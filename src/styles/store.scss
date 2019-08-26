@@ -119,6 +119,12 @@
 .quantity-btn {
 	padding: 1px 8px;
 	margin-top: 4px;
+	background: #eee;
+	transition: 400ms;
+}
+
+.quantity-btn:hover {
+	background: #ccc;
 }
 
 @media(min-width:768px) {

@@ -95,7 +95,8 @@ h4 {
   margin: -50px 10px;
   position: relative;
   z-index: 5;
-  color: #806a45; 
+  color: #17a2b8; 
+  cursor: pointer;
 }
 
 #shopping-cart-icon{
@@ -492,6 +493,8 @@ nav {
   margin-bottom: 30px;
 }
 
+
+
 /**** tooltip ****/
 
 .my-tooltip {
@@ -544,7 +547,8 @@ footer {
   @include transform(scale(1.1));
 }
 
-#copyright p {
-  float: right;
-  font-size: 1.4em;
+@media (min-width:576px){
+  #copyright p {
+    float: right;
+  }  
 }

@@ -174,7 +174,7 @@ class Keyring extends Component {
             ""
           )}
         </div>
-        {/* <div className="modal-background" onClick={this.context.router.history.goBack}/> */}
+        <Link to="/store"><div className="modal-background"/></Link>
       </section>
     );
   }
