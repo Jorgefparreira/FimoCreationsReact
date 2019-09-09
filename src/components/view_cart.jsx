@@ -55,23 +55,24 @@ class ViewCart extends Component {
   }
 
   addOne(name, quantity) {
-    let newQuantity = quantity + 1;
-    this.state.items.map((item, index) => {
-      if (this.state.items[index].product === name) {
-        this.state.items[index].quantity = newQuantity;
+    this.state.items.map((item) => {
+      if (item.product === name) {
+        item.quantity = quantity + 1;
         this.forceUpdate();
       }
     });
   }
 
   removeOne(name, quantity) {
-    let newQuantity = quantity - 1;
-    if (newQuantity < 1) {
+    if (quantity - 1 < 1) {
       this.deleteProduct(name);
+      if(this.state.items.length < 2) {
+        this.hideCart()
+       }       
     }
-    this.state.items.map((item, index) => {
-      if (this.state.items[index].product === name) {
-        this.state.items[index].quantity = newQuantity;
+    this.state.items.map((item) => {
+      if (item.product === name) {
+        item.quantity = quantity - 1;
         this.forceUpdate();
       }
     });
@@ -135,7 +136,7 @@ class ViewCart extends Component {
                       </button>
                       <br />
                       <span className="view-cart-product">
-                        £{item.price.toFixed(2)}
+                        £{(item.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
                     <button

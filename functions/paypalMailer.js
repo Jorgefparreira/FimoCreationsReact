@@ -8,16 +8,21 @@ const transporter = nodemailer.createTransport({
       pass: functions.config().mail.key
   }
 });
+
 exports.handler = function(req, res) {
   cors(req, res, () => {
   //  res.redirect('/');
+
   const mailOpts = {
-    from: `${req.body.email}`,
+    from: `annonimous@email.com`,
     to: functions.config().mail.id,
-    subject: 'New message from contact form at Lil Fimo Creations',
+    subject: 'New paypal order from Lil Fimo Creations',
     text: `${req.body.name}, email: ${req.body.email}, phone number ${req.body.phone}, says: ${req.body.message}`
   };
 	transporter.sendMail(mailOpts);
-  res.status(200).send({isEmailSend: true});
+	res.status(200).send({isEmailSend: true});
+		
+		// transport.close();
+
   });
 }

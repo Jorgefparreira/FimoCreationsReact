@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MetaTags from "react-meta-tags";
 import PAPERPLANE from "../assets/svg/paper_plane";
+import Axios from "axios";
 
 class Contact extends Component {
   constructor() {
@@ -37,27 +38,21 @@ class Contact extends Component {
     let data = `name=${this.state.name}&phone=${this.state.phone}&email=${
       this.state.email
     }&message=${this.state.message}`;
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log("done");
-      }
-    };
-    xhttp.open(
-      "POST",
-      "https://us-central1-lilfimokeyrings.cloudfunctions.net/contactMailer",
-      true
-    );
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(data);
+    Axios.post('https://us-central1-lilfimokeyrings.cloudfunctions.net/contactMailer', data)
+    .then((response) => {
+      this.setState({
+        displayThanks: "thanks-message"
+      });
+    })    
+    .catch(error => {
+        console.log(error);
+    });    
 
     this.setState({
       name: "",
       phone: "",
       email: "",
-      message: "",
-      displayThanks: "thanks-message"
+      message: ""
     });
     // ([e.target.name] = ""),
     //   ([e.target.phone] = ""),

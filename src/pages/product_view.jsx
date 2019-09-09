@@ -68,12 +68,12 @@ class Keyring extends Component {
       });
     });
     this.item = items.find(({ id }) => id === this.match);
-    this.item.images.map((image, i) => {
+    this.item.images = this.item.images.map((image, i) => {
       if(image != null){
         slideImages.push(image)
       }
+      return slideImages
     });
-    this.item.images = slideImages;
     this.setState({
       items: this.item
     });
