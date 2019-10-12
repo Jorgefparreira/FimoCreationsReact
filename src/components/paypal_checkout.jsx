@@ -34,7 +34,16 @@ class PaypalCheckout extends Component {
 
   onCancel = data => {
     console.log("The payment was cancelled!", data);
- 
+    let formData = `name='sent'`;
+    console.log(formData)
+    console.table(this.state.items)
+    Axios.post('https://us-central1-lilfimokeyrings.cloudfunctions.net/paypalMailer', formData)
+    .then((response) => {
+      console.log(response)
+    })    
+    .catch(error => {
+        console.log(error);
+    });    
   };
 
   onError = err => {
@@ -45,7 +54,7 @@ class PaypalCheckout extends Component {
   render() {
     return (
       <section>
-        <PaypalExpressBtn env={this.paypalEnv} client={this.client} currency={'GBP'} total={this.props.total} onCancel={this.onCancel} onError={this.onError} onSuccess={this.onSuccess} />
+        {/* <PaypalExpressBtn env={this.paypalEnv} client={this.client} currency={'GBP'} total={this.props.total} onCancel={this.onCancel} onError={this.onError} onSuccess={this.onSuccess} /> */}
       </section>
     )
   }  

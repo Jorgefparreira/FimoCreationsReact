@@ -87,7 +87,8 @@ class ViewCart extends Component {
             id="view-cart-btn"
             onClick={this.toggle.bind(this)}
           >
-            <SHOPPINGCART/> {this.state.items.length}
+            <SHOPPINGCART/> 
+            <div id="cart-length-wrapper">{this.state.items.length}</div>
             
           </div>
           

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Keyring from "./product_view";
 import { firebase } from "../Firebase";
 import "../styles/store.scss";
+import MagGlass from "../assets/svg/mag_glass";
 
 function scrollTop() {
   window.scrollTo(0, 0);
@@ -90,7 +91,7 @@ class Store extends Component {
           </div>
           <br />
           <br />
-          <div className="nav-category">SEARCH:</div>
+          <div className="nav-category"><MagGlass></MagGlass> SEARCH:</div>
           <input
             className="form-group"
             id="searchStore"

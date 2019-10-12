@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MetaTags from "react-meta-tags";
-import PAPERPLANE from "../assets/svg/paper_plane";
+import PaperPlane from "../assets/svg/paper_plane";
 import Axios from "axios";
 
 class Contact extends Component {
@@ -35,9 +35,7 @@ class Contact extends Component {
     }
     this.setState({ displayErrors: "" });
 
-    let data = `name=${this.state.name}&phone=${this.state.phone}&email=${
-      this.state.email
-    }&message=${this.state.message}`;
+    let data = `name=${this.state.name}&phone=${this.state.phone}&email=${      this.state.email}&message=${this.state.message}`;
     Axios.post('https://us-central1-lilfimokeyrings.cloudfunctions.net/contactMailer', data)
     .then((response) => {
       this.setState({
@@ -196,7 +194,7 @@ class Contact extends Component {
                       className="btn btn-info"
                       id="submit-button"
                     >
-                      <PAPERPLANE></PAPERPLANE>&nbsp;
+                      <PaperPlane></PaperPlane>&nbsp;
                       Submit
                     </button>
                     

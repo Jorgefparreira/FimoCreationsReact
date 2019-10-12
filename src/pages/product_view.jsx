@@ -6,6 +6,7 @@ import { Slide, RightArrow, LeftArrow } from "../components/slider";
 import { store, addToCart } from "../components/cart_functions";
 import { firebase } from "../Firebase";
 import MetaTags from "react-meta-tags";
+import CHECK from "../assets/svg/check";
 
 class Keyring extends Component {
   constructor(props) {
@@ -16,14 +17,15 @@ class Keyring extends Component {
       items: [],
       currentIndex: 0,
       translateValue: 0,
-      addCartText: "Add to Cart"
+      addCartText: "Add to Cart",
+      addCartTick: 'none'
     };
     this.match = props.match.params.keyringId;
   }
 
-  static contextTypes = {
-    router: () => null
-  };  
+  // static contextTypes = {
+  //   router: () => null
+  // };  
 
   goToPrevSlide = () => {
     if (this.state.currentIndex === 0) return;
@@ -81,7 +83,7 @@ class Keyring extends Component {
 
   addCart(name, price, image) {
     store.dispatch(addToCart(name, 1, price, image));
-    this.setState({ addCartText: "Added <i class='fas fa-check'></i>" });
+    this.setState({ addCartText: "Added ", addCartTick: 'inline-block' });
   }
 
   componentDidMount() {
@@ -157,13 +159,11 @@ class Keyring extends Component {
                           this.state.items.images
                         )
                       }
-                      dangerouslySetInnerHTML={{
-                        __html: this.state.addCartText
-                      }}
-                    />
+                      
+                    >{this.state.addCartText} <CHECK display={this.state.addCartTick}></CHECK></button>
                     <Link to="/store">
                       <button className="btn btn-default product-back-btn">
-                        Back
+                        Back 
                       </button>
                     </Link>
                   </div>
