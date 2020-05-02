@@ -139,13 +139,13 @@ h4 {
   width: 300px;
   overflow-y: scroll;
   opacity: 1;
-  @include transition(500ms);
-  @include transform(translateX(300px));
+  transition:500ms;
+  transform:translateX(300px);
 }
 
 .view-cart-box-show {
   width: 300px;
-  @include transform(translateX(0));
+  transform:translateX(0);
 }
 
 .paypal-btn {
@@ -168,7 +168,7 @@ h4 {
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
   top: 0;
-  @include transition(500ms)
+  transition:500ms;
 }
 
 .show-cart-overlay{
@@ -205,19 +205,19 @@ h4 {
 }
 
 .z-depth-1 {
-  @include box-shadow3(
+  box-shadow:
     0 0 0 0 rgba(0, 0, 0, 0.14),
     0 0 0 0 rgba(0, 0, 0, 0.12),
     0 0 0 -0 rgba(0, 0, 0, 0.2)
-  );
+  ;
 }
 
 .z-depth-2 {
-  @include box-shadow3(
+  box-shadow:
     0 4px 5px 0 rgba(0, 0, 0, 0.14),
     0 1px 10px 0 rgba(0, 0, 0, 0.12),
     0 2px 4px -1px rgba(0, 0, 0, 0.3)
-  );
+  ;
 }
 
 .navbar-default {
@@ -299,7 +299,7 @@ label {
 nav {
   .navbar-collapse {
     display: block !important;
-    @include transition(500ms);
+    transition:500ms;
     z-index: 9999;
     background-color: transparent;
     height: 100%;
@@ -330,7 +330,7 @@ nav {
     left: 50%;
     position: absolute;
     background: #141414 !important;
-    @include transition2(width 0.3s ease 0s, left 0.3s ease 0s);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
   }
 
@@ -360,7 +360,7 @@ nav {
 .hamburger-wrapper .icon-bar1,
 .hamburger-wrapper .icon-bar2 {
   position: relative;
-  @include transition(all 500ms);
+  transition: all 500ms;
 }
 
 .hamburgerAni-icon-bar1 {
@@ -442,38 +442,7 @@ nav {
 
 }
 
-@keyframes donutAnimation {
-  0% {
-    transform: translate(-75px, -60px) rotate(9deg);
-  }
-  8% {
-    transform: translate(-75px, -60px) rotate(9deg);
-  }
-  16%{
-    transform: translate(0px, -60px) rotate(6deg);
-  }
-  90%{
-    transform: translate(0px, -60px) rotate(6deg);    
-  }
-  100%{
-    transform: translate(-75px, -60px) rotate(9deg);
-  }
-}
 
-@keyframes appleAnimation {
-  0% {
-    transform: translate(61px, -118px) rotate(0deg);
-  }
-  10% {
-    transform: translate(-40px, -118px) rotate(-11deg);
-  }
-  90%{
-    transform: translate(-40px, -118px) rotate(-11deg);
-  }
-  100%{
-    transform: translate(61px, -118px) rotate(0deg);
-  }
-}
 
 #homepage-store-btn {
   position: absolute;
@@ -529,7 +498,7 @@ nav {
 
 #contact .alert {
   overflow: hidden;
-  @include transition(800ms);
+  transition:800ms;
   padding: 0 1.25rem;
   max-height: 0;
   border: none;
@@ -630,11 +599,11 @@ footer {
   cursor: pointer;
   margin: 5px 5px;
   height: 40px;
-  @include transition(500ms);
+  transition:500ms;
 }
 
 .social-media-link:hover {
-  @include transform(scale(1.1));
+  transform:scale(1.1);
 }
 
 @media (min-width:576px){

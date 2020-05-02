@@ -154,7 +154,7 @@ class ViewCart extends Component {
               <div className="clearfix">&nbsp;</div>
               <p>Total: £{this.cartTotal().toFixed(2)}</p>
               <div className="paypal-btn">
-                <PaypalCheckout items={this.state.items} total={this.cartTotal()}></PaypalCheckout>
+                {/* <PaypalCheckout items={this.state.items} total={this.cartTotal()}></PaypalCheckout> */}
                         
               </div>
             </div>

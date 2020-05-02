@@ -54,7 +54,7 @@ class PaypalCheckout extends Component {
   render() {
     return (
       <section>
-        {/* <PaypalExpressBtn env={this.paypalEnv} client={this.client} currency={'GBP'} total={this.props.total} onCancel={this.onCancel} onError={this.onError} onSuccess={this.onSuccess} /> */}
+        <PaypalExpressBtn env={this.paypalEnv} client={this.client} currency={'GBP'} total={this.props.total} onCancel={this.onCancel} onError={this.onError} onSuccess={this.onSuccess} />
       </section>
     )
   }  
