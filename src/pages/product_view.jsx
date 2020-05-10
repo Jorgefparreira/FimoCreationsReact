@@ -130,9 +130,7 @@ class Keyring extends Component {
                 <div className="col-md-6">
                   <h2 className="h3">{this.state.items.name}</h2>
                   <div className="clearfix">&nbsp;</div>
-                  <p
-                    className="inner-product-description"
-                    dangerouslySetInnerHTML={{
+                  <p className="inner-product-description"     dangerouslySetInnerHTML={{
                       __html: this.state.items.description
                     }}
                   />

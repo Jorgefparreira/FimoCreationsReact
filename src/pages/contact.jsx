@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import MetaTags from "react-meta-tags";
-import PaperPlane from "../assets/svg/paper_plane";
 import Axios from "axios";
+
+import PaperPlane from "../assets/svg/paper_plane";
+import ContactPic from "../assets/kawaii_keyrings.jpg";
 
 class Contact extends Component {
   constructor() {
@@ -203,7 +205,7 @@ class Contact extends Component {
                 </div>
                 <div className="col-sm-12 col-md-6 col-lg-5 ">
                   <img
-                    src={require("../assets/kawaii_keyrings.jpg")}
+                    src={ContactPic}
                     className="img-fluid"
                     alt="Kawaii fimo keyrings"
                   />

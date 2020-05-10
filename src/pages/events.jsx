@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import MetaTags from "react-meta-tags";
 
+import ConventionTablePic from "../assets/events.jpg";
+import BirminghamPic from "../assets/birminghamnovlogo.png";
+import ReadingPic from "../assets/reading_con.jpg";
+
 class Events extends Component {
   render() {
     return (
@@ -23,7 +27,7 @@ class Events extends Component {
             </div>
             <div className="col-md-6">
               <img
-                src={require("../assets/events.jpg")}
+                src={ConventionTablePic}
                 className="img-fluid"
                 alt="Convention table"
               />
@@ -51,7 +55,7 @@ class Events extends Component {
             </div>
             <div className="col-md-4">
               <img
-                src={require("../assets/birminghamnovlogo.png")}
+                src={BirminghamPic}
                 className="img-fluid"
                 alt="Birmingham MCM Comic Con"
               />
@@ -77,7 +81,7 @@ class Events extends Component {
             </div>
             <div className="col-md-4 reading_con">
               <img
-                src={require("../assets/reading_con.jpg")}
+                src={ReadingPic}
                 className="img-fluid"
                 alt="Reading Comic Con"
               />

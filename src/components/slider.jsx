@@ -1,5 +1,4 @@
 import React from "react";
-import "swiper/dist/css/swiper.min.css";
 
 export const Slide = ({ image }) => {
   const styles = {

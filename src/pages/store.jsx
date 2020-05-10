@@ -48,6 +48,7 @@ class Store extends Component {
 
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+
   }
 
   searchStore(event) {
@@ -64,6 +65,10 @@ class Store extends Component {
     this.setState({ type: category });
   }
 
+  handleImageLoaded(image){
+    image.target.closest(".product-card-container").style.opacity = 1;
+  }
+
   render() {
     return (
       <div className="container ">
@@ -74,7 +79,7 @@ class Store extends Component {
             content="Browse through all the Lil Fimo Creations."
           />
         </MetaTags>
-        <nav className="store-nav">
+        <nav id="store-nav">
           <div
             className="nav-category"
             id="category-keyring"
@@ -99,7 +104,7 @@ class Store extends Component {
           />
         </nav>
 
-        <div className="row">
+        <div className="row" id="product-container">
           {this.state.items
             .filter(item => item.type === this.state.type)
             .filter(item =>
@@ -108,7 +113,7 @@ class Store extends Component {
             .slice(0, this.state.visible)
             .map((item, index) => {
               return (
-                <div key={index} className="col-sm-6 col-md-4">
+                <div key={index} className="col-sm-6 col-md-4 product-card-container">
                   <div className="card product-card z-depth-3">
                     <Link className="thumbnail" to={`/store/${item.id}`}>
                       <img
@@ -116,6 +121,7 @@ class Store extends Component {
                         src={item.images[0]}
                         alt="{item.name}"
                         className="img-fluid"
+                        onLoad={this.handleImageLoaded.bind(this)}
                       />
                     </Link>
                     <div className="card-text">
