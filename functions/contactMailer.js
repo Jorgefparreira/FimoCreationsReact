@@ -5,7 +5,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: functions.config().mail.id,
-    pass: functions.config().mail.key
+    pass: functions.config().mail.appkey
   }
 });
 exports.handler = function (req, res) {

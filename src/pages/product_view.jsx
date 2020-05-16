@@ -23,10 +23,6 @@ class Keyring extends Component {
     this.match = props.match.params.keyringId;
   }
 
-  // static contextTypes = {
-  //   router: () => null
-  // };  
-
   goToPrevSlide = () => {
     if (this.state.currentIndex === 0) return;
 
@@ -54,7 +50,6 @@ class Keyring extends Component {
   };
 
   onCollectionUpdate = querySnapshot => {
-    const slideImages = [];
     const items = [];
     querySnapshot.forEach(doc => {
       const { name, description, price, id, images, type } = doc.data();
@@ -70,12 +65,6 @@ class Keyring extends Component {
       });
     });
     this.item = items.find(({ id }) => id === this.match);
-    this.item.images = this.item.images.map((image, i) => {
-      if(image != null){
-        slideImages.push(image)
-      }
-      return slideImages
-    });
     this.setState({
       items: this.item
     });
@@ -118,7 +107,7 @@ class Keyring extends Component {
                       ))}
                     </div>
                     {this.state.items.images.length > 1 ? (
-                      <div>
+                      <div id="slider-arrows">
                         <LeftArrow goToPrevSlide={this.goToPrevSlide} />
                         <RightArrow goToNextSlide={this.goToNextSlide} />
                       </div>
